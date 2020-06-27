@@ -598,7 +598,10 @@ function renderPasta({ localImg, times, name, num }, i) {
     path.style("fill", `hsl(${Math.random() * 360}, 50%, 50%)`);
     const timer = d3.timer(function (t) {
       path.attr("d", arc({ endAngle: scale(Date.now()) }));
-      if (Date.now() > end) timer.stop();
+      if (Date.now() > end) {
+        alert(`Your ${name.toLowerCase()} is done!`);
+        timer.stop();
+      }
     });
   });
 }
