@@ -572,7 +572,7 @@ d3.select("section")
 function renderPasta({ localImg, times, name, num }, i) {
   const sel = d3.select(this);
   const time = +times[0][1].split(" ")[0];
-  sel.append("img").attr("src", `images/${localImg}`).style("width", "200px");
+  sel.append("img").attr("src", `images/${localImg}`);
   sel.append("h2").text(name);
   sel.append("div").attr("class", "num").text(`№ ${num}`);
   sel
