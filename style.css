@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "Watchtower";
+  src: url("/watchtower.ttf") format("truetype");
+}
+@font-face {
+  font-family: "BodoniLTPro-Book";
+  src: url("/BodoniLTPro-Book.woff") format("woff");
+}
+@font-face {
+  font-family: "BodoniLTPro-BookItalic";
+  src: url("BodoniLTPro-BookItalic.woff") format("woff");
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "BodoniLTPro-Book";
+}
+
+h1 {
+  font-family: "Watchtower";
+  font-size: 4em;
+  padding: 4rem;
+  margin: 0;
+  background-image: linear-gradient(to bottom, #001f57, #0091e5);
+  color: white;
+  text-shadow: 3px 3px 0 #002463;
+  text-align: center;
+}
+
+footer {
+  font-family: "BodoniLTPro-BookItalic";
+  padding: 3rem 3rem 5rem 3rem;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem 0;
+}
+
+.item {
+  position: relative;
+  text-shadow: 0.7px 0.7px 0 #fff;
+}
+
+.item h2 {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.item .num {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.item .time {
+  position: absolute;
+  font-family: "BodoniLTPro-BookItalic";
+  right: 1.5rem;
+  top: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.item .time small {
+  display: block;
+  position: relative;
+  top: -0.75em;
+  font-size: 0.5em;
+}
+
+.item svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
