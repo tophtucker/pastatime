@@ -570,10 +570,11 @@ d3.select("section")
   .join("div")
   .attr("class", "item")
   .each(renderPasta)
+  .filter((_, i) => i < 10)
   .select("path")
-  .attr("opacity", 0.7)
+  .attr("opacity", (_, i) => 1 / Math.sqrt(i + 1))
   .transition()
-  .delay((_, i) => 250 + i * 50)
+  .delay((_, i) => 250 + i * 100)
   .tween("arc", function () {
     const i = d3.interpolateNumber(0, 10);
     return function (t) {
