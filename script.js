@@ -562,19 +562,42 @@ const pastas = [
   },
 ];
 
+const arc = d3.arc().innerRadius(0).outerRadius(10).startAngle(0);
+
 d3.select("section")
   .selectAll("div")
   .data(pastas)
   .join("div")
   .attr("class", "item")
-  .each(renderPasta);
+  .each(renderPasta)
+  .select("path")
+  .attr("opacity", 0.7)
+  .transition()
+  .delay((_, i) => 250 + i * 50)
+  .tween("arc", function () {
+    const i = d3.interpolateNumber(0, 10);
+    return function (t) {
+      this.setAttribute(
+        "d",
+        d3.arc()({
+          innerRadius: 0,
+          startAngle: 0,
+          outerRadius: i(t),
+          endAngle: Math.PI * 2,
+        })
+      );
+    };
+  })
+  .transition()
+  .duration(500)
+  .attr("opacity", 0);
 
-function renderPasta({ localImg, times, name, num }, i) {
+function renderPasta({ localImg, times, name, num, url }, i) {
   const sel = d3.select(this);
   const time = +times[0][1].split(" ")[0];
   sel.append("img").attr("src", `images/${localImg}`);
   sel.append("h2").text(name);
-  sel.append("div").attr("class", "num").text(`№ ${num}`);
+  sel.append("a").attr("class", "num").attr("href", url).text(`№ ${num}`);
   sel
     .append("div")
     .attr("class", "time")
@@ -587,15 +610,15 @@ function renderPasta({ localImg, times, name, num }, i) {
     .append("path");
 
   sel.on("click", function () {
-    console.log("hi");
-    const arc = d3.arc().innerRadius(0).outerRadius(10).startAngle(0);
     const start = Date.now();
     const end = d3.timeMinute.offset(start, time);
     const scale = d3
       .scaleTime()
       .domain([start, end])
       .range([0, 2 * Math.PI]);
-    path.style("fill", `hsl(${Math.random() * 360}, 50%, 50%)`);
+    path
+      .style("fill", `hsl(${Math.random() * 360}, 50%, 50%)`)
+      .attr("opacity", 1);
     const timer = d3.timer(function (t) {
       path.attr("d", arc({ endAngle: scale(Date.now()) }));
       if (Date.now() > end) {

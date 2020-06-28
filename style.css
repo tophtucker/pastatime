@@ -17,15 +17,29 @@ body {
   font-family: "BodoniLTPro-Book";
 }
 
+header {
+  background-image: linear-gradient(to bottom, #001f57, #0091e5);
+  border-left: 12px solid #ffd301;
+  border-right: 12px solid #ffd301;
+  box-shadow: 0 3px 3px #ddd;
+}
+
+/* @keyframes rainbow {
+  from { filter: hue-rotate(0deg); }
+  to { filter: hue-rotate(360deg); }
+} */
+
 h1 {
   font-family: "Watchtower";
   font-size: 4em;
   padding: 4rem;
   margin: 0;
-  background-image: linear-gradient(to bottom, #001f57, #0091e5);
   color: white;
   text-shadow: 3px 3px 0 #002463;
   text-align: center;
+  border-left: 4px solid white;
+  border-right: 4px solid white;
+  margin: 0 4px;
 }
 
 footer {
@@ -33,6 +47,7 @@ footer {
   padding: 3rem 3rem 5rem 3rem;
   text-align: center;
   border-top: 1px solid #eee;
+  background: white;
 }
 
 section {
@@ -46,6 +61,7 @@ section {
 .item {
   position: relative;
   text-shadow: 1px 1px 0 #fff;
+  cursor: pointer;
 }
 
 .item h2 {
@@ -59,12 +75,19 @@ section {
 
 .item img {
   width: 200px;
+  transition: transform 0.5s;
+}
+
+.item img:hover {
+  transform: scale(0.9);
 }
 
 .item .num {
   position: absolute;
   top: 1.5rem;
   left: 1.5rem;
+  text-decoration: none;
+  color: inherit;
 }
 
 .item .time {
@@ -90,6 +113,10 @@ section {
   z-index: -1;
   top: 0;
   left: 0;
+}
+
+.item svg path {
+  fill: #eee;
 }
 
 @media (max-width: 424px) {
